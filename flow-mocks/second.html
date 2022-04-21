@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <style>
+      body {
+        padding: 0%;
+        margin: 0;
+      }
+      .grid {
+        width: 100vw;
+        height: 100vh;
+        display: grid;
+        grid-template-columns: repeat(5, 20%);
+        grid-template-rows: repeat(5, 20%);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+        cursor: pointer;
+      }
+      .grid-item {
+        width: 20vw;
+        height: 20vh;
+        border: 1px solid black;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        position: relative;
+
+        visibility: 60%;
+        z-index: 99;
+      }
+      .grid-item h1 {
+        margin: auto;
+        user-select: none;
+        -webkit-user-select: none;
+        z-index: 9;
+        pointer-events: none;
+      }
+
+      .grid-item .bubble {
+        background: inherit;
+        -webkit-filter: invert(100%);
+        filter: invert(100%);
+        border-radius: 25px;
+        position: absolute;
+        height: 50px;
+        width: 50px;
+        animation-name: expandBubble;
+        animation-duration: 0.5s;
+      }
+
+      @-webkit-keyframes expandBubble {
+        from {
+          opacity: 1;
+          transform: scale(1);
+        }
+        to {
+          opacity: 0;
+          transform: scale(20);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="grid">
+      <div data-flow="grid-1" class="grid-item">
+        <h1>1</h1>
+      </div>
+      <div data-flow="grid-2" class="grid-item">
+        <h1>2</h1>
+      </div>
+      <div data-flow="grid-3" class="grid-item">
+        <h1>3</h1>
+      </div>
+      <div data-flow="grid-4" class="grid-item">
+        <h1>4</h1>
+      </div>
+      <div data-flow="grid-5" class="grid-item">
+        <h1>5</h1>
+      </div>
+      <div data-flow="grid-6" class="grid-item">
+        <h1>6</h1>
+      </div>
+      <div data-flow="grid-7" class="grid-item">
+        <h1>7</h1>
+      </div>
+      <div data-flow="grid-8" class="grid-item">
+        <h1>8</h1>
+      </div>
+      <div data-flow="grid-9" class="grid-item">
+        <h1>9</h1>
+      </div>
+      <div data-flow="grid-10" class="grid-item">
+        <h1>10</h1>
+      </div>
+      <div data-flow="grid-11" class="grid-item">
+        <h1>11</h1>
+      </div>
+      <div data-flow="grid-12" class="grid-item">
+        <h1>12</h1>
+      </div>
+      <div data-flow="grid-13" class="grid-item">
+        <h1>13</h1>
+      </div>
+      <div data-flow="grid-14" class="grid-item">
+        <h1>14</h1>
+      </div>
+      <div data-flow="grid-15" class="grid-item">
+        <h1>15</h1>
+      </div>
+      <div data-flow="grid-16" class="grid-item">
+        <h1>16</h1>
+      </div>
+      <div data-flow="grid-17" class="grid-item">
+        <h1>17</h1>
+      </div>
+      <div data-flow="grid-18" class="grid-item">
+        <h1>18</h1>
+      </div>
+      <div data-flow="grid-19" class="grid-item">
+        <h1>19</h1>
+      </div>
+      <div data-flow="grid-20" class="grid-item">
+        <h1>20</h1>
+      </div>
+      <div data-flow="grid-21" class="grid-item">
+        <h1>21</h1>
+      </div>
+      <div data-flow="grid-22" class="grid-item">
+        <h1>22</h1>
+      </div>
+      <div data-flow="grid-23" class="grid-item">
+        <h1>23</h1>
+      </div>
+      <div data-flow="grid-24" class="grid-item">
+        <h1>24</h1>
+      </div>
+      <div data-flow="grid-25" class="grid-item">
+        <h1>25</h1>
+      </div>
+    </div>
+    <script>
+      $(".grid-item").each(function () {
+        $(this).css(
+          "background",
+          "#" + Math.floor(Math.random() * 16777215).toString(16)
+        );
+        $(this).click(function (e) {
+          var bubble = document.createElement("div");
+          var rect = e.target.getBoundingClientRect();
+          (clickCoords = [e.clientX - rect.left, e.clientY - rect.top]),
+            (x = clickCoords[0] - 25),
+            (y = clickCoords[1] - 25);
+
+          bubble.setAttribute("class", "bubble");
+          bubble.style.userSelect = "none";
+          bubble.style.webkitUserSelect = "none";
+          bubble.style.left = x + "px";
+          bubble.style.top = y + "px";
+          bubble.style.pointerEvents = "none";
+
+          $(this).append(bubble);
+          setTimeout(function () {
+            // $(this).empty();
+          }, 500);
+        });
+      });
+    </script>
+    <script flow="fsbgkjhsdhbbkhd" src="../flow-tool/index.js"></script>
+  </body>
+</html>

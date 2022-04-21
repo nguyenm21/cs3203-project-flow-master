@@ -1,5 +1,7 @@
+let user_info = {};
 
 let analytics = {};
+
 let positions = { data: [] };
 (() => {
   //Abstract API to Get user location information
@@ -7,6 +9,7 @@ let positions = { data: [] };
   axios.get('https://ipgeolocation.abstractapi.com/v1/?api_key=07e7ac4b727a4ade8bdd4fe4ac8d4601')
       .then(response => {
           console.log(response.data);
+          user_info.data.push(response.data);
       })
       .catch(error => {
           console.log(error);
